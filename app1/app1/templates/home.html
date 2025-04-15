@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App1</title>
+  </head>
+  <body>
+    <h1>App1</h1>
+    <button id="callApp2Button">Call App2</button>
+    <p id="response"></p>
+
+    <script>
+      document
+        .getElementById("callApp2Button")
+        .addEventListener("click", function () {
+          fetch("/call-app2/")
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("response").innerHTML =
+                JSON.stringify(data);
+            })
+            .catch((error) => {
+              document.getElementById("response").innerHTML = "Error: " + error;
+            });
+        });
+    </script>
+  </body>
+</html>

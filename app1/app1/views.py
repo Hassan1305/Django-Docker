@@ -1,5 +1,6 @@
 import requests
 from django.http import JsonResponse
+from django.shortcuts import render
 
 def call_app2(request):
     try:
@@ -7,3 +8,6 @@ def call_app2(request):
         return JsonResponse({'response_from_app2': res.json()})
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
+def home(request):
+    return render(request, 'home.html')
